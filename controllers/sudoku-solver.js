@@ -136,6 +136,8 @@ class SudokuSolver {
     num = parseInt(num);
     let conflict = [];
 
+    if (grid[row][column] === num) return { valid: true };
+
     let rowIsValid = this.checkRowPlacement(grid, row, col, num);
     let colIsValid = this.checkColPlacement(grid, row, col, num);
     let regionIsValid = this.checkRegionPlacement(grid, row, col, num);
