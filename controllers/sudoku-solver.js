@@ -131,8 +131,8 @@ class SudokuSolver {
 
   checkPlacement(puzzleString, row, col, num) {
     let grid = this.transform(puzzleString);
-    row = this.letterToNumber(row) - 1;
-    col = parseInt(col) - 1;
+    row = this.letterToNumber(row);
+    col = parseInt(col);
     num = parseInt(num);
     let conflict = [];
 
@@ -153,7 +153,7 @@ class SudokuSolver {
     // Check if we find the same num
     // in the similar row , we
     // return false
-    for (let x = 0; x <= 8; x++) if (grid[row][x] == num) return false;
+    for (let x = 0; x <= 8; x++) if (grid[row - 1][x] == num) return false;
 
     return true;
   }
@@ -162,10 +162,7 @@ class SudokuSolver {
     // Check if we find the same num
     // in the similar column ,
     // we return false
-    for (let x = 0; x <= 8; x++) {
-      console.log(grid[x][col]);
-      if (grid[x][col] == num) return false;
-    }
+    for (let x = 0; x <= 8; x++) if (grid[x][col - 1] == num) return false;
 
     return true;
   }
@@ -174,6 +171,9 @@ class SudokuSolver {
     // Check if we find the same num
     // in the particular 3*3
     // matrix, we return false
+    row = row - 1;
+    column = column - 1;
+
     let startRow = row - (row % 3),
       startCol = col - (col % 3);
 
