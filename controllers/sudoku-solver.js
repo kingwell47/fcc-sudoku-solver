@@ -137,8 +137,8 @@ class SudokuSolver {
     let conflict = [];
 
     if (grid[row - 1][col - 1] === num) return { valid: true };
-    let rowIsValid = this.checkRowPlacement(grid, row, col, num);
-    let colIsValid = this.checkColPlacement(grid, row, col, num);
+    let rowIsValid = this.checkRowPlacement(grid, row, num);
+    let colIsValid = this.checkColPlacement(grid, col, num);
     let regionIsValid = this.checkRegionPlacement(grid, row, col, num);
 
     if (!rowIsValid) conflict.push("row");
@@ -149,7 +149,7 @@ class SudokuSolver {
     return { valid: true };
   }
 
-  checkRowPlacement(grid, row, column, num) {
+  checkRowPlacement(grid, row, num) {
     // Check if we find the same num
     // in the similar row , we
     // return false
@@ -158,7 +158,7 @@ class SudokuSolver {
     return true;
   }
 
-  checkColPlacement(grid, row, col, num) {
+  checkColPlacement(grid, col, num) {
     // Check if we find the same num
     // in the similar column ,
     // we return false
@@ -172,7 +172,7 @@ class SudokuSolver {
     // in the particular 3*3
     // matrix, we return false
     row = row - 1;
-    column = column - 1;
+    col = col - 1;
 
     let startRow = row - (row % 3),
       startCol = col - (col % 3);
