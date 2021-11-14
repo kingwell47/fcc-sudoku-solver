@@ -185,6 +185,7 @@ class SudokuSolver {
   }
 
   solve(puzzleString) {
+    if (!this.validate(puzzleString).valid) return false;
     let grid = this.transform(puzzleString);
     let solved = this.solveSuduko(grid, 0, 0);
     if (!solved) return false;
