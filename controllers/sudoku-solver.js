@@ -85,7 +85,7 @@ class SudokuSolver {
   }
 
   transform(puzzleString) {
-    let gridArray = puzzleString.replaceAll(".", "0").split("");
+    let gridArray = puzzleString.replace(/\./g, "0").split("");
 
     let grid = [];
     let row = [];
