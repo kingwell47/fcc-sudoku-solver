@@ -93,7 +93,7 @@ class SudokuSolver {
     for (let i = 0; i < gridArray.length; i++) {
       row = [];
       for (let j = 0; j < 9; j++) {
-        row.push(gridArray.shift());
+        row.push(parseInt(gridArray.shift()));
       }
       grid.push(row);
     }
@@ -136,8 +136,7 @@ class SudokuSolver {
     num = parseInt(num);
     let conflict = [];
 
-    if (grid[row][column] === num) return { valid: true };
-
+    if (grid[row][col] === num) return { valid: true };
     let rowIsValid = this.checkRowPlacement(grid, row, col, num);
     let colIsValid = this.checkColPlacement(grid, row, col, num);
     let regionIsValid = this.checkRegionPlacement(grid, row, col, num);
