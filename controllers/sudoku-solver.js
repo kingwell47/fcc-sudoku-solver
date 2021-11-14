@@ -131,8 +131,8 @@ class SudokuSolver {
 
   checkPlacement(puzzleString, row, col, num) {
     let grid = this.transform(puzzleString);
-    row = this.letterToNumber(row);
-    col = parseInt(col);
+    row = this.letterToNumber(row) - 1;
+    col = parseInt(col) - 1;
     num = parseInt(num);
     let conflict = [];
 
@@ -161,7 +161,10 @@ class SudokuSolver {
     // Check if we find the same num
     // in the similar column ,
     // we return false
-    for (let x = 0; x <= 8; x++) if (grid[x][col] == num) return false;
+    for (let x = 0; x <= 8; x++) {
+      console.log(grid[x][col]);
+      if (grid[x][col] == num) return false;
+    }
 
     return true;
   }
