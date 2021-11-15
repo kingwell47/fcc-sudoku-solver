@@ -9,6 +9,14 @@ class SudokuSolver {
       errorMessage = "Invalid characters in puzzle";
       return { valid: false, errorMessage };
     }
+    let count = 0;
+    for (let i = 0; i < puzzleString.length; i++) {
+      if (puzzleString[i] !== ".") count++;
+    }
+    if (count < 17) {
+      errorMessage = "Not enough givens / multiple solutions";
+      return { valid: false, errorMessage };
+    }
     return { valid: true };
   }
   // https://www.geeksforgeeks.org/sudoku-backtracking-7/
